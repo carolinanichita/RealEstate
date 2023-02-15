@@ -1,67 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:background="@color/white"
+            app:queryHint="Search for home"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="30dp"
-            android:background="#DFDEDE"
-            android:drawableRight="@drawable/ic_search"
-            android:ems="10"
-            android:fontFamily="@font/gothamssm_light"
-            android:hint="Search for home"
-            android:inputType="textPersonName"
-            android:paddingStart="10dp"
-            android:textColor="#0C0C0C" />
+            android:layout_height="wrap_content" />
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_marginTop="100dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView45754" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cardView" />
+
+
+
+
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/editTextTextPersonName"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:layout_marginTop="30dp"-->
+    <!--            android:background="#DFDEDE"-->
+    <!--            android:drawableRight="@drawable/ic_search"-->
+    <!--            android:ems="10"-->
+    <!--            android:fontFamily="@font/gothamssm_light"-->
+    <!--            android:hint="Search for home"-->
+    <!--            android:inputType="textPersonName"-->
+    <!--            android:paddingStart="10dp"-->
+    <!--            android:textColor="#0C0C0C" />-->
+
+    <!--    </LinearLayout>-->
+
+
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView7"-->
+    <!--        android:layout_marginTop="100dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="TextView45754" />-->
 
 
     <!--    <LinearLayout-->
-<!--        android:layout_marginTop="0dp"-->
-<!--        android:padding="10dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="500dp"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="vertical">-->
+    <!--        android:layout_marginTop="0dp"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="500dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <include-->
-<!--            android:id="@+id/container_header_lyt"-->
-<!--            layout="@layout/activity_house_details"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="400dp" />-->
+    <!--        <include-->
+    <!--            android:id="@+id/container_header_lyt"-->
+    <!--            layout="@layout/activity_house_details"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="400dp" />-->
 
-<!--        <include-->
-<!--            android:id="@+id/container_header_lyt"-->
-<!--            layout="@layout/no_results_found"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="400dp" />-->
-<!--    </LinearLayout>-->
+    <!--        <include-->
+    <!--            android:id="@+id/container_header_lyt"-->
+    <!--            layout="@layout/no_results_found"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="400dp" />-->
+    <!--    </LinearLayout>-->
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="659dp"-->
-<!--        tools:listitem="@layout/list_item" />-->
-
-</FrameLayout>
+</RelativeLayout>

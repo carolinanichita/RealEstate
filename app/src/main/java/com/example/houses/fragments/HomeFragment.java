@@ -3,7 +3,9 @@ package com.example.houses.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.houses.HouseModel;
 import com.example.houses.R;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.ClientProtocolException;
@@ -18,36 +21,35 @@ import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.H
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.methods.HttpGet;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.DefaultHttpClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class HomeFragment extends Fragment {
-    TextView textView;
+//    TextView textView;
+    SearchView searchView;
+    RecyclerView recyclerView;
+    ArrayList<HouseModel> housesList = new ArrayList<>();
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+//    public HomeFragment() {
+//        // Required empty public constructor
+//    }
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,19 +57,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        textView = view.findViewById(R.id.textView7);
-        textView.setText("message dsfgfds gfds");
-        // Inflate the layout for this fragment
+//        textView = view.findViewById(R.id.textView7);
+        searchView = view.findViewById(R.id.searchView);
+        recyclerView = view.findViewById(R.id.recyclerView);
+//        textView.setText("message dsfgfds gfds");
 
         this.getDataFromBE();
         return view;
@@ -89,17 +87,49 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
+                    final String stringResponse = response.body().string();
+                    JSONArray array;
+
+                    try {
+                        array = new JSONArray(stringResponse);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+//                    MediaType contentType = response.body().contentType();
+//                    ResponseBody body = ResponseBody.create(contentType, ArrayList<HouseModel>);
+//                    ArrayList<HouseModel> dataResponse = response.newBuilder().body(body).build();
 
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("STATE",myResponse);
-                            textView.setText(myResponse);
+                            Log.d("STATE",stringResponse);
+//                            textView.setText(myResponse);
+                            setDataIntoList(array);
                         }
                     });
                 }
             }
         });
+    }
+
+    public void setDataIntoList(JSONArray data) {
+        for (int i = 0; i < data.length(); i++) {
+            HouseModel houseModel = new HouseModel();
+            houseModel.setId(data[i]);
+            houseModel.setImage(data[i].);
+            houseModel.setPrice(data[i].);
+            houseModel.setBedrooms(data[i].);
+            houseModel.setBathrooms(data[i].);
+            houseModel.setSize(data[i].);
+            houseModel.setDescription(data[i].);
+            houseModel.setZip(data[i].);
+            houseModel.setCity(data[i].);
+            houseModel.setLatitude(data[i].);
+            houseModel.setLongitude(data[i].);
+            houseModel.setCreatedDate(data[i].);
+            housesList.add(data.getString(i));
+        }
     }
 }
