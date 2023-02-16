@@ -1,6 +1,7 @@
 package com.example.houses;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +33,13 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HouseAdapter.MyHolder holder, int position) {
-//        holder.image.setInt(houseList.get(position).getImage());
+//        holder.image.setImageURI(Uri.parse(houseList.get(position).getImage()));
+//        holder.image.setImageURI(Uri.parse("https://cdn.pixabay.com/photo/2019/10/13/20/07/house-4547140_640.jpg"));
         holder.city.setText(houseList.get(position).getCity());
-//        holder.price.setText(houseList.get(position).getPrice());
-//        holder.bedrooms.setText(houseList.get(position).getBedrooms());
-//        holder.bathrooms.setText(houseList.get(position).getBathrooms());
-//        holder.size.setText(houseList.get(position).getSize());
+        holder.price.setText(String.valueOf(houseList.get(position).getPrice()));
+        holder.bedrooms.setText(String.valueOf(houseList.get(position).getBedrooms()));
+        holder.bathrooms.setText(String.valueOf(houseList.get(position).getBathrooms()));
+        holder.size.setText(String.valueOf(houseList.get(position).getSize()));
         holder.zip.setText(houseList.get(position).getZip());
     }
 
