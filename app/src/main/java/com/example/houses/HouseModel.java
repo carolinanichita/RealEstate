@@ -1,8 +1,11 @@
 package com.example.houses;
 
+import java.util.Comparator;
+
 public class HouseModel {
     private int id;
     private String image;
+    private int localImage;
     private int price;
     private int bedrooms;
     private int bathrooms;
@@ -13,6 +16,9 @@ public class HouseModel {
     private int latitude;
     private int longitude;
     private String createdDate;
+
+    public int getLocalImage() {return localImage;}
+    public void setLocalImage(int localImage) {this.localImage = localImage;}
 
     public HouseModel() {
     }
@@ -35,23 +41,16 @@ public class HouseModel {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public String getImage() {return image;}
+    public void setImage(String image) {this.image = image;}
 
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -59,7 +58,6 @@ public class HouseModel {
     public int getBedrooms() {
         return bedrooms;
     }
-
     public void setBedrooms(int bedrooms) {
         this.bedrooms = bedrooms;
     }
@@ -67,7 +65,6 @@ public class HouseModel {
     public int getBathrooms() {
         return bathrooms;
     }
-
     public void setBathrooms(int bathrooms) {
         this.bathrooms = bathrooms;
     }
@@ -75,7 +72,6 @@ public class HouseModel {
     public int getSize() {
         return size;
     }
-
     public void setSize(int size) {
         this.size = size;
     }
@@ -83,7 +79,6 @@ public class HouseModel {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -91,7 +86,6 @@ public class HouseModel {
     public String getZip() {
         return zip;
     }
-
     public void setZip(String zip) {
         this.zip = zip;
     }
@@ -99,7 +93,6 @@ public class HouseModel {
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
@@ -107,7 +100,6 @@ public class HouseModel {
     public int getLatitude() {
         return latitude;
     }
-
     public void setLatitude(int latitude) {
         this.latitude = latitude;
     }
@@ -115,7 +107,6 @@ public class HouseModel {
     public int getLongitude() {
         return longitude;
     }
-
     public void setLongitude(int longitude) {
         this.longitude = longitude;
     }
@@ -123,8 +114,17 @@ public class HouseModel {
     public String getCreatedDate() {
         return createdDate;
     }
-
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
+
+//    @Override
+//    public int compare(HouseModel houseModel, HouseModel t1) {
+//        return houseModel.getPrice().compareTo(t1.getPrice());
+//    }
+
+//    @Override
+//    public int compareTo(HouseModel houseModel) {
+//        return houseModel.getPrice();
+//    }
 }

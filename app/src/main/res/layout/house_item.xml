@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5dp"
+    android:id="@+id/houseCardView">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +27,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@mipmap/search_state_empty" />
+                android:src="@drawable/house1" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,8 +49,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="$ 0,000"
-                    android:textColor="#0C0C0C"
-                    android:textSize="34sp" />
+                    android:textColor="#CC000000"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/gothamssm_bold"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -57,13 +63,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
-                        android:text="1011 Kh" />
+                        android:text="1011 Kh"
+                        android:fontFamily="@font/gothamssm_light"/>
 
                     <TextView
                         android:id="@+id/city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Raamgrach" />
+                        android:text="Raamgrach"
+                        android:fontFamily="@font/gothamssm_light"/>
                 </LinearLayout>
 
             </LinearLayout>

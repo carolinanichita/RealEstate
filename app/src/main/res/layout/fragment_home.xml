@@ -6,11 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DTT REAL ESTATE"
+        android:gravity="left"
+        android:textSize="18sp"
+        android:fontFamily="@font/gothamssm_bold"
+        android:textColor="#CC000000"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         android:layout_height="wrap_content">

@@ -1,7 +1,11 @@
 package com.example.houses.fragments;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,14 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.houses.HouseAdapter;
+import com.example.houses.HouseDetailsActivity;
 import com.example.houses.HouseModel;
 import com.example.houses.R;
+import com.example.houses.SelectListenerInterface;
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 import okhttp3.Call;
@@ -29,12 +37,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SelectListenerInterface {
     SearchView searchView;
     RecyclerView recyclerView;
     ArrayList<HouseModel> housesList = new ArrayList<>();
     ArrayList<HouseModel> searchList;
     View noResultsLayout;
+    int[] houseImages = {
+            R.drawable.house1, R.drawable.house2,
+            R.drawable.house3, R.drawable.house4,
+            R.drawable.house5, R.drawable.house6,
+            R.drawable.house7, R.drawable.house8,
+            R.drawable.house9, R.drawable.house10,
+    };
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -65,6 +80,24 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    public interface OnHeadlineSelectedListener {
+        public void onArticleSelected(int position);
+    }
+
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//
+//        // This makes sure that the container activity has implemented
+//        // the callback interface. If not, it throws an exception
+//        try {
+//            mCallback = (OnHeadlineSelectedListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement OnHeadlineSelectedListener");
+//        }
+//    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -88,6 +121,11 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
     }
 
     private void searchListFunctionality(String searchValue) {
@@ -158,9 +196,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void addModelToList(ArrayList<HouseModel> listFrom, ArrayList<HouseModel> listTo, int index) {
+
+//        ImageView imageHouse = (ImageView) getView().findViewById(R.id.imageHouse);
         HouseModel houseModel = new HouseModel();
         houseModel.setId(listFrom.get(index).getId());
-        houseModel.setImage(listFrom.get(index).getImage());
+        houseModel.setLocalImage(houseImages[index]);
         houseModel.setPrice(listFrom.get(index).getPrice());
         houseModel.setBedrooms(listFrom.get(index).getBedrooms());
         houseModel.setBathrooms(listFrom.get(index).getBathrooms());
@@ -172,6 +212,13 @@ public class HomeFragment extends Fragment {
         houseModel.setLongitude(listFrom.get(index).getLongitude());
         houseModel.setCreatedDate(listFrom.get(index).getCreatedDate());
         listTo.add(houseModel);
+
+        // Ascending Sort by price for the ArrayList ( listTo ) of HouseModel objects
+        Collections.sort(listTo, new Comparator< HouseModel >() {
+            @Override public int compare(HouseModel houseModel1, HouseModel houseModel2) {
+                return houseModel1.getPrice()- houseModel2.getPrice();
+            }
+        });
     }
 
     private void showRecycleList() {
@@ -188,7 +235,16 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        HouseAdapter houseAdapter = new HouseAdapter(getContext(), listForInit);
+        HouseAdapter houseAdapter = new HouseAdapter(getContext(), listForInit, this);
         recyclerView.setAdapter(houseAdapter);
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(getActivity(), HouseDetailsActivity.class);
+        intent.putExtra("PRICE", String.valueOf(housesList.get(position).getPrice()));
+        intent.putExtra("IMAGE", String.valueOf(housesList.get(position).getLocalImage()));
+
+        startActivity(intent);
     }
 }
