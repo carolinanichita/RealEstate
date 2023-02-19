@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
     tools:context=".fragments.HomeFragment">
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gothamssm_bold"
         android:gravity="left"
-        android:paddingLeft="10dp"
+        android:paddingLeft="5dp"
         android:paddingTop="20dp"
         android:text="DTT REAL ESTATE"
         android:textColor="#CC000000"
@@ -21,8 +22,8 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
 
@@ -42,9 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/cardView"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp" />
 
     <include

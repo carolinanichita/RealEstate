@@ -39,7 +39,8 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
     public void onBindViewHolder(@NonNull HouseAdapter.MyHolder holder, int position) {
         holder.image.setImageResource(houseList.get(position).getLocalImage());
         holder.city.setText(houseList.get(position).getCity());
-        holder.price.setText("$" + String.valueOf(houseList.get(position).getPrice()));
+        holder.price.setText(String.valueOf(houseList.get(position).getPrice()));
+//        holder.description.setText(String.valueOf(houseList.get(position).getDescription()));
         holder.bedrooms.setText(String.valueOf(houseList.get(position).getBedrooms()));
         holder.bathrooms.setText(String.valueOf(houseList.get(position).getBathrooms()));
         holder.size.setText(String.valueOf(houseList.get(position).getSize()));
@@ -54,7 +55,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
     public class MyHolder extends RecyclerView.ViewHolder {
         int id;
         ImageView image;
-        TextView price, bedrooms, bathrooms, size, zip, city, latitude, longitude, createdDate;
+        TextView price, bedrooms, bathrooms, size, zip, city, description, latitude, longitude, createdDate;
         public CardView cardView;
 
         public MyHolder(@NonNull View itemView, SelectListenerInterface selectListenerInterface) {
@@ -62,6 +63,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
 
             image = itemView.findViewById(R.id.imageHouse);
             price = itemView.findViewById(R.id.textViewPrice);
+            description = itemView.findViewById(R.id.textViewDescription);
             bedrooms = itemView.findViewById(R.id.textViewBedroomsNumber);
             bathrooms = itemView.findViewById(R.id.textViewBathroomsNumber);
             size = itemView.findViewById(R.id.textViewHouseSize);

@@ -26,16 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setItemIconTintList(ContextCompat.getColorStateList(MainActivity.this, R.color.home_menu_color));
-        bottomNavigationView.setSelectedItemId(R.id.homeMenu);
-
-//        bottomNavigationView.selectedItemId = R.id.page_2
-
-//        bottomNavigationView.setItemBackgroundResource(android.R.color.holo_red_light);
-
-//        bottomNavigationView.setItemIconTintList(null);
-
-//        public void setIconTint(ColorStateList iconTint);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, Home_fragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -48,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.infoMenu:
+                        bottomNavigationView.setSelected(true);
+
 //                        bottomNavigationView.setSelectedItemId(R.id.infoMenu);
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, Info_fragment).commit();
                         break;
@@ -55,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, Home_fragment).commit();
                 }
-                return false;
+                return true;
             }
 
         });

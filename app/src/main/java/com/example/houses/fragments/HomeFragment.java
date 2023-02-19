@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -83,20 +84,6 @@ public class HomeFragment extends Fragment implements SelectListenerInterface {
     public interface OnHeadlineSelectedListener {
         public void onArticleSelected(int position);
     }
-
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//
-//        // This makes sure that the container activity has implemented
-//        // the callback interface. If not, it throws an exception
-//        try {
-//            mCallback = (OnHeadlineSelectedListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnHeadlineSelectedListener");
-//        }
-//    }
 
     @Override
     public void onDestroy() {
@@ -202,10 +189,10 @@ public class HomeFragment extends Fragment implements SelectListenerInterface {
         houseModel.setId(listFrom.get(index).getId());
         houseModel.setLocalImage(houseImages[index]);
         houseModel.setPrice(listFrom.get(index).getPrice());
+        houseModel.setDescription(listFrom.get(index).getDescription());
         houseModel.setBedrooms(listFrom.get(index).getBedrooms());
         houseModel.setBathrooms(listFrom.get(index).getBathrooms());
         houseModel.setSize(listFrom.get(index).getSize());
-        houseModel.setDescription(listFrom.get(index).getDescription());
         houseModel.setZip(listFrom.get(index).getZip());
         houseModel.setCity(listFrom.get(index).getCity());
         houseModel.setLatitude(listFrom.get(index).getLatitude());
@@ -241,9 +228,15 @@ public class HomeFragment extends Fragment implements SelectListenerInterface {
 
     @Override
     public void onItemClicked(int position) {
+        String priceWithDecimal = new DecimalFormat("000,000").format(housesList.get(position).getPrice());
+
         Intent intent = new Intent(getActivity(), HouseDetailsActivity.class);
-        intent.putExtra("PRICE", String.valueOf(housesList.get(position).getPrice()));
+        intent.putExtra("PRICE", String.valueOf(priceWithDecimal));
         intent.putExtra("IMAGE", String.valueOf(housesList.get(position).getLocalImage()));
+        intent.putExtra("DESCRIPTION", housesList.get(position).getDescription());
+        intent.putExtra("BEDROOMS", String.valueOf(housesList.get(position).getBedrooms()));
+        intent.putExtra("BATHROOMS", String.valueOf(housesList.get(position).getBathrooms()));
+        intent.putExtra("SIZE", String.valueOf(housesList.get(position).getSize()));
 
         startActivity(intent);
     }

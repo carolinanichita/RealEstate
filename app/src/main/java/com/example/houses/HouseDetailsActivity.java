@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class HouseDetailsActivity extends AppCompatActivity {
     Button back;
-    TextView priceView;
+    TextView priceView, descriptionView, bedroomsView, bathroomsView, sizeView;
     ImageView imageView;
     WebView webView;
 
@@ -35,12 +35,24 @@ public class HouseDetailsActivity extends AppCompatActivity {
     private void getData() {
         priceView = findViewById(R.id.textViewHomePrice);
         imageView = findViewById(R.id.imageView15);
+        descriptionView = findViewById(R.id.textViewDescription);
+        bedroomsView = findViewById(R.id.textViewBedRooms);
+        bathroomsView = findViewById(R.id.textViewBathRooms);
+        sizeView = findViewById(R.id.textViewRoomSize);
 
         String price = getIntent().getStringExtra("PRICE");
         String image = getIntent().getStringExtra("IMAGE");
+        String description = getIntent().getStringExtra("DESCRIPTION");
+        String bedrooms = getIntent().getStringExtra("BEDROOMS");
+        String bathrooms = getIntent().getStringExtra("BATHROOMS");
+        String size = getIntent().getStringExtra("SIZE");
 
         priceView.setText(price);
         imageView.setImageResource(Integer.parseInt(image));
+        descriptionView.setText(description);
+        bedroomsView.setText(bedrooms);
+        bathroomsView.setText(bathrooms);
+        sizeView.setText(size);
     }
 
     private void loadMap() {
