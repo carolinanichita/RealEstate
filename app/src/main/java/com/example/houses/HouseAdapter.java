@@ -40,7 +40,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
         holder.image.setImageResource(houseList.get(position).getLocalImage());
         holder.city.setText(houseList.get(position).getCity());
         holder.price.setText(String.valueOf(houseList.get(position).getPrice()));
-//        holder.description.setText(String.valueOf(houseList.get(position).getDescription()));
         holder.bedrooms.setText(String.valueOf(houseList.get(position).getBedrooms()));
         holder.bathrooms.setText(String.valueOf(houseList.get(position).getBathrooms()));
         holder.size.setText(String.valueOf(houseList.get(position).getSize()));
@@ -69,9 +68,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.MyHolder> {
             size = itemView.findViewById(R.id.textViewHouseSize);
             zip = itemView.findViewById(R.id.zipCode);
             city = itemView.findViewById(R.id.city);
-//            latitude = itemView.findViewById(R.id.la);
-//            longitude = itemView.findViewById(R.id.imageHouse);
-//            createdDate = itemView.findViewById(R.id.imageHouse);
             cardView = itemView.findViewById(R.id.houseCardView);
 
             cardView.setOnClickListener(new View.OnClickListener() {

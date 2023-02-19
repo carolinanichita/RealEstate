@@ -19,7 +19,7 @@
         android:id="@+id/bottom_nav"
         android:paddingTop="10dp"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@color/bottom_navigation"
+        app:itemIconTint="@color/bottom_navigation_selector"
         app:menu="@menu/bottom_nav_menu" />
 
 

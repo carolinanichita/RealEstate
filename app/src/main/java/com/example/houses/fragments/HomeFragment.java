@@ -184,7 +184,6 @@ public class HomeFragment extends Fragment implements SelectListenerInterface {
 
     private void addModelToList(ArrayList<HouseModel> listFrom, ArrayList<HouseModel> listTo, int index) {
 
-//        ImageView imageHouse = (ImageView) getView().findViewById(R.id.imageHouse);
         HouseModel houseModel = new HouseModel();
         houseModel.setId(listFrom.get(index).getId());
         houseModel.setLocalImage(houseImages[index]);

@@ -1,13 +1,4 @@
-package com.example.houses;//@Override
-//public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//        Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//        if(i != 0){
-//        rootView = inflater.inflate(R.layout.fragment_magazine, container, false);
-//        TextView magText = (TextView) rootView.findViewById(R.id.textViewMag);
-//        new GetData("http://csddata.site11.com").execute();
-//        }
-//        }
+package com.example.houses;
 
 import android.os.AsyncTask;
 import android.util.Log;

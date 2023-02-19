@@ -23,21 +23,6 @@ public class HouseModel {
     public HouseModel() {
     }
 
-    //    public HouseItem(int id, String image, int price, int bedrooms, int bathrooms, int size, String description, String zip, String city, int latitude, int longitude, String createdDate) {
-//        this.id = id;
-//        this.image = image;
-//        this.price = price;
-//        this.bedrooms = bedrooms;
-//        this.bathrooms = bathrooms;
-//        this.size = size;
-//        this.description = description;
-//        this.zip = zip;
-//        this.city = city;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
-//        this.createdDate = createdDate;
-//    }
-
     public int getId() {
         return id;
     }
@@ -117,14 +102,4 @@ public class HouseModel {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
-
-//    @Override
-//    public int compare(HouseModel houseModel, HouseModel t1) {
-//        return houseModel.getPrice().compareTo(t1.getPrice());
-//    }
-
-//    @Override
-//    public int compareTo(HouseModel houseModel) {
-//        return houseModel.getPrice();
-//    }
 }
