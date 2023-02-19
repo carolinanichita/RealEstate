@@ -169,14 +169,16 @@
                 android:textColor="#CC000000"
                 android:textSize="16sp" />
 
-            <FrameLayout
-                android:id="@+id/google_map_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <WebView
+            android:id="@+id/webViewMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </LinearLayout>
