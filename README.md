@@ -1,4 +1,4 @@
-# RealEstate app
+# RealEstate app - Android Studio ( Java )
 where users are able to view houses retrieved from an API. 
 
 User Story 1: the user is able to see the DTT splash screen in order to have a sense of DTT branding.
